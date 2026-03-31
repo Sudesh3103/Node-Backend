@@ -1,11 +1,18 @@
 require('dotenv').config();
-
 const express = require('express');
-const cors = require('cors');
 const app = express();
+const cors = require('cors');
 const PORT = process.env.PORT || 5000;
+app.use(cors());
 
-const gitHubdata =
+
+
+app.get('/', (req, res) => {
+  res.send('Hello from the backend!');
+}); 
+
+app.get('/github', (req, res) =>{
+  const gitHubdata =
 {
   "login": "Sudesh3103",
   "id": 121598949,
@@ -41,14 +48,6 @@ const gitHubdata =
   "created_at": "2022-12-29T06:10:47Z",
   "updated_at": "2026-03-28T10:07:01Z"
 }
-
-app.use(cors());
-
-app.get('/', (req, res) => {
-  res.send('Hello from the backend!');
-}); 
-
-app.get('/github', (req, res) =>{
     res.json(gitHubdata);
 })
 
